@@ -1,0 +1,28 @@
+install bootstrap
+-composer require laravel/ui
+-php artisan ui bootstrap
+- php artisan ui bootstrap --auth
+	- otomatis dibuatkan halaman login, register, 
+	- disediakan database/migration
+- npm install && npm run dev
+- sesuaikan database di .env
+- php artisan migrate (untuk membuat tabel ke database)
+- tambahkan __construct()/auth (untuk mendirec ke login jika blum login)
+create database
+- php artisan make:migration pengunjung --crate=pengunjuns (usahakan nama tabel di jamak/banyak dg cara ditambah s untuk mempermudah)
+	-dengan tambahan create otomatis ditambahkan schema di gunction up dan down
+- php artisan migrate (untuk menambahkan tabel ke database)
+	- php artisan migrate:rollback --step=(isikan batch yang ada di database)
+
+Penjelasan menampilkan data dari database 
+
+tambah controller pengunjung
+- php aritasan make:controller PengunjungController -r (-r bertujuan agar pembuatannya langsung ditambahkan beberapa function)
+Buat route
+- Route::resource('pengunjung','PengunjungCOntroller') (dengan resource kita otomatis dibuatkan route untuk masing2 function tadi)
+	- php artisan route:list
+- menambahkan csrf_field() dibawah form tambah
+- tambahkan use \App\modals\pengunjung di Pengunjung Controller
+- pada function store tambahkan script tambah;
+- php artisan make:modal Pengunjung
+	- tambahkan script untuk kolom yang mau di tambahkan data
